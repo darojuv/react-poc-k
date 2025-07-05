@@ -18,11 +18,19 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "eslintConfig": {
+"eslintConfig": {
+  "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint"
+    ],
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ],
+  "rules": {
+      "no-unused-vars": "off",
+      "@typescript-eslint/no-unused-vars":0
+    }
   },
   "browserslist": {
     "production": [
