@@ -1,14 +1,25 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-# More GitHub Actions for Azure: https://github.com/Azure/action
+# More GitHub Actions for Azure: https://github.com/Azure/actions
 
 name: Build and deploy Node.js app to Azure Web App - ReactApp2
+
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
     inputs:
-      branch:
-        description: 'Branch to use'
+      deploy_branch:
+        description: 'Select branch to deploy'
         required: true
         default: 'main'
+        type: choice
+        options:
+          - main
+          - dev
+          - staging
+          - feature-xyz
+
 jobs:
   build:
     runs-on: windows-latest
@@ -16,7 +27,10 @@ jobs:
       contents: read #This is required for actions/checkout
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout selected branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.deploy_branch || 'main' }}
 
       - name: Set up Node.js version
         uses: actions/setup-node@v3
@@ -62,4 +76,3 @@ jobs:
           app-name: 'ReactApp2'
           slot-name: 'Production'
           package: .
-          
