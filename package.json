@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@azure/msal-browser": "^4.14.0",
+    "@azure/msal-react": "^3.0.14",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
     "@mui/material": "^7.2.0",
@@ -22,8 +24,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-"eslintConfig": {
-  "parser": "@typescript-eslint/parser",
+  "eslintConfig": {
+    "parser": "@typescript-eslint/parser",
     "plugins": [
       "@typescript-eslint"
     ],
@@ -31,9 +33,9 @@
       "react-app",
       "react-app/jest"
     ],
-  "rules": {
+    "rules": {
       "no-unused-vars": "off",
-      "@typescript-eslint/no-unused-vars":0
+      "@typescript-eslint/no-unused-vars": 0
     }
   },
   "browserslist": {

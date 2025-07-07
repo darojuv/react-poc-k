@@ -3,13 +3,28 @@ import { StrictMode } from "react";
 
 import "./App.css";
 
+import { PublicClientApplication } from "@azure/msal-browser";
+import { MsalProvider, AuthenticatedTemplate, UnauthenticatedTemplate } from "@azure/msal-react";
+import { msalConfig } from "./authConfig";
+
+const msalInstance = new PublicClientApplication(msalConfig);
+
 function App() {
   return (
-    <StrictMode>
-      <div className="app-bg">
-        <SpaceMissionDetails />
-      </div>
-    </StrictMode>
+    <MsalProvider instance={msalInstance}>
+      <AuthenticatedTemplate>
+        <StrictMode>
+          <div className="app-bg">
+            <SpaceMissionDetails />
+          </div>
+        </StrictMode>
+      </AuthenticatedTemplate>
+      <UnauthenticatedTemplate>
+        {/* Your "not signed in" static page content goes here */}
+        <h1>Please sign in to access this application.</h1>
+        {/* Add a sign-in button here */}
+      </UnauthenticatedTemplate>
+    </MsalProvider>
   );
 }
 
