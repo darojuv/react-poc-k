@@ -17,7 +17,6 @@ type AgGridWrapperProps = {
   theme?: Theme | "legacy";
   pagination?: boolean;
   animateRows?: boolean;
-  rowModelType?: "infinite" | "clientSide";
 };
 
 export function Grid({
@@ -31,7 +30,6 @@ export function Grid({
   theme = "legacy",
   pagination = true,
   animateRows = true,
-  rowModelType = "clientSide",
 }: AgGridWrapperProps) {
   return (
     <div className="ag-theme-alpine grid-wrapper" 
@@ -59,7 +57,6 @@ export function Grid({
         animateRows={animateRows}
         pagination={pagination}
         paginationPageSize={pageSize}
-        rowModelType={rowModelType}
       />
     </div>
   );
