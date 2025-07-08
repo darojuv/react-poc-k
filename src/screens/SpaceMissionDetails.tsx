@@ -10,16 +10,16 @@ import { ToggleGridSwitch } from "../Components/Switch";
 import "./SpaceMissionDetails.css";
 
 // 1. Define the row data type
-type RowDataType = {
-  Company: string;
-  Date: number;
-  Location: string;
-  Mission: string;
-  Price: number;
-  Rocket: string;
-  Successful: boolean;
-  Time: string;
-};
+// type RowDataType = {
+//   Company: string;
+//   Date: number;
+//   Location: string;
+//   Mission: string;
+//   Price: number;
+//   Rocket: string;
+//   Successful: boolean;
+//   Time: string;
+// };
 
 export default function SpaceMissionDetails() {
   const [rowData, setRowData] = useState<any[]>([]);
@@ -28,7 +28,7 @@ export default function SpaceMissionDetails() {
 
   const pageSize = 20;
 
-  const [colDefs, setColDefs] = useState([
+  const colDefs = [
     { field: "mission", sortable: true, filter: true, rowGroup: true },
     {
       field: "company",
@@ -60,7 +60,7 @@ export default function SpaceMissionDetails() {
       rowGroup: false,
       valueFormatter: timeFormatter,
     },
-  ]);
+  ]
 
   // Fetch all data once (simulate server-side pagination)
   useEffect(() => {
@@ -92,7 +92,6 @@ export default function SpaceMissionDetails() {
       {showGrid && (
         <div className="ag-theme-alpine" style={{ height: 350, width: "100%" }}>
           <Grid
-            theme="legacy"
             rowData={rowData}
             loading={loading}
             columnDefs={colDefs}
