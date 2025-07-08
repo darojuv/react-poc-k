@@ -13,11 +13,7 @@ function App() {
   return (
     <MsalProvider instance={msalInstance}>
       <AuthenticatedTemplate>
-        <StrictMode>
-          <div className="app-bg">
-            <SpaceMissionDetails />
-          </div>
-        </StrictMode>
+
       </AuthenticatedTemplate>
       <UnauthenticatedTemplate>
         {/* Your "not signed in" static page content goes here */}
@@ -25,6 +21,11 @@ function App() {
         {/* Add a sign-in button here */}
       </UnauthenticatedTemplate>
     </MsalProvider>
+        <StrictMode>
+          <div className="app-bg">
+            <SpaceMissionDetails />
+          </div>
+        </StrictMode>  
   );
 }
 
